@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff7f8">
+  <title>အရူးမလေးရေ 💗</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap');
+
+    :root {
+      --pink: #f7a8b8;
+      --deep-pink: #d95770;
+      --soft-pink: #fff0f3;
+      --ink: #653b46;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 15% 15%, #ffe0e8 0, transparent 28%),
+        radial-gradient(circle at 85% 85%, #ffe8d8 0, transparent 30%),
+        #fff8f9;
+      color: var(--ink);
+      font-family: "Noto Sans Myanmar", "Myanmar Text", sans-serif;
+    }
+
+    .card {
+      width: min(100%, 440px);
+      padding: 30px 22px 26px;
+      border: 1px solid #f8dce2;
+      border-radius: 28px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 18px 55px rgba(181, 92, 113, .14);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tiny-label {
+      margin: 0 0 14px;
+      color: #bd7888;
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+
+    .kitty {
+      font-size: 82px;
+      line-height: 1.25;
+      margin: 2px 0 12px;
+      animation: bob 2.2s ease-in-out infinite;
+      user-select: none;
+    }
+
+    h1 {
+      margin: 0 auto 10px;
+      color: #b34f63;
+      font-size: clamp(1.25rem, 5vw, 1.65rem);
+      line-height: 1.8;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin: 0 auto 18px;
+      color: #97717a;
+      font-size: .98rem;
+      line-height: 1.9;
+    }
+
+    .button-stage {
+      width: 100%;
+      height: 108px;
+      position: relative;
+      margin: 4px auto 8px;
+      border-radius: 18px;
+      background: #fff9fa;
+      border: 1px dashed #f4d5dc;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    .choice {
+      position: absolute;
+      top: 30px;
+      min-width: 112px;
+      min-height: 52px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 15px;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 0 rgba(80, 30, 40, .08);
+      transition: left .16s ease, top .16s ease, transform .16s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #noBtn {
+      left: calc(50% - 122px);
+      background: #39bfa8;
+      color: white;
+    }
+
+    #yesBtn {
+      left: calc(50% + 10px);
+      background: #e76578;
+      color: white;
+    }
+
+    .choice:active { transform: scale(.96); }
+
+    .hint {
+      min-height: 48px;
+      margin: 12px 0 0;
+      color: #c45b70;
+      font-size: .94rem;
+      line-height: 1.9;
+    }
+
+    .apology {
+      display: none;
+      margin-top: 20px;
+      padding: 18px 16px;
+      border: 1px solid #f5c8d2;
+      border-radius: 20px;
+      background: #fff1f4;
+      line-height: 2;
+      animation: pop .35s ease both;
+    }
+
+    .apology.show { display: block; }
+
+    .apology h2 {
+      margin: 0 0 8px;
+      color: #bf4e66;
+      font-size: 1.15rem;
+    }
+
+    .apology p { margin: 0; font-size: .97rem; }
+
+    .footer {
+      margin: 18px 0 0;
+      color: #c79aa4;
+      font-size: .76rem;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      pointer-events: none;
+      opacity: .8;
+      animation: floatUp 4.5s linear forwards;
+      z-index: 5;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-7px) rotate(3deg); }
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(10px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes floatUp {
+      to { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+    }
+
+    @media (max-width: 360px) {
+      .card { padding: 24px 14px; }
+      .choice { min-width: 100px; padding: 10px 12px; }
+      #noBtn { left: calc(50% - 112px); }
+      #yesBtn { left: calc(50% + 7px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p class="tiny-label">♡ မင်းအတွက်ပဲ ♡</p>
+    <div class="kitty" aria-hidden="true">🐱</div>
+    <h1 id="question">အရူးမလေး စိတ်ကောက်နေတာလား? 💗</h1>
+    <p class="subtitle">ကိုယ့်ကို ခွင့်လွှတ်ပေးတော့မလားဟင်… 🥺</p>
+
+    <div class="button-stage" id="stage" aria-label="ရွေးချယ်ရန် ခလုတ်များ">
+      <button class="choice" id="noBtn" type="button">NO ❤️</button>
+      <button class="choice" id="yesBtn" type="button">YES 💖</button>
+    </div>
+
+    <p class="hint" id="hint" aria-live="polite">ဟိုဘက်က ခလုတ်လေးကိုလည်း စမ်းနှိပ်ကြည့်နော် 🙈</p>
+
+    <section class="apology" id="apology" aria-live="polite">
+      <h2>Yayyy! 🥹💗</h2>
+      <p>
+        အရူးမလေးရေ… ကိုယ်ပြောလိုက်တဲ့စကားကြောင့် စိတ်မကောင်းဖြစ်သွားရင်
+        တကယ်တောင်းပန်ပါတယ်နော်။ ကိုယ်က မင်းကို စိတ်ညစ်စေချင်တာ မဟုတ်ပါဘူး။
+        နောက်ဆို မင်းခံစားချက်ကို ပိုဂရုစိုက်ပြီး ပြောပါ့မယ်။<br>
+        စိတ်ပြေဖို့ အချိန်လိုရင်လည်း ကိုယ်စောင့်ပေးမယ်နော်။ 💌<br>
+        <strong>ခွင့်လွှတ်ပေးပါနော် အရူးမလေး ❤️</strong>
+      </p>
+    </section>
+
+    <p class="footer">made with ♡ just for you</p>
+  </main>
+
+  <script>
+    const stage = document.getElementById("stage");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const hint = document.getElementById("hint");
+    const apology = document.getElementById("apology");
+
+    const noMessages = [
+      "ဟင်… မရဘူးလား 🥺",
+      "တစ်ခါလောက် စဉ်းစားပေးပါနော် 💗",
+      "အရူးမလေးရေ မပြေးနဲ့ဦး 😂",
+      "ကိုယ်တကယ်တောင်းပန်ပါတယ်နော် 😭",
+      "YES လေးကို နှိပ်ပေးပါလား 🙈",
+      "ဖမ်းမမိဘူးနော် 🤣"
+    ];
+    let noCount = 0;
+
+    function moveNoButton() {
+      const stageRect = stage.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      const maxLeft = Math.max(0, stage.clientWidth - noBtn.offsetWidth);
+      const maxTop = Math.max(0, stage.clientHeight - noBtn.offsetHeight);
+
+      // Choose a new position within the button area.
+      let left = Math.random() * maxLeft;
+      let top = Math.random() * maxTop;
+
+      // Try to keep the NO button away from the YES button.
+      const yesLeft = yesBtn.offsetLeft;
+      const yesTop = yesBtn.offsetTop;
+      for (let i = 0; i < 12; i++) {
+        left = Math.random() * maxLeft;
+        top = Math.random() * maxTop;
+        const farEnough = Math.abs(left - yesLeft) > 95 || Math.abs(top - yesTop) > 45;
+        if (farEnough) break;
+      }
+
+      noBtn.style.left = left + "px";
+      noBtn.style.top = top + "px";
+      noCount++;
+      hint.textContent = noMessages[(noCount - 1) % noMessages.length];
+    }
+
+    // Move away before a mouse click, and on touch so it works on phones too.
+    noBtn.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") moveNoButton();
+    });
+    noBtn.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "mouse") {
+        event.preventDefault();
+        moveNoButton();
+      }
+    });
+    noBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      moveNoButton();
+    });
+
+    yesBtn.addEventListener("click", () => {
+      apology.classList.add("show");
+      hint.textContent = "အိုဟို! စိတ်ပြေသွားပြီလို့ မျှော်လင့်ပါတယ်နော် 🥹💞";
+      yesBtn.textContent = "THANK YOU 💗";
+      yesBtn.disabled = true;
+      yesBtn.style.opacity = ".85";
+      apology.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      for (let i = 0; i < 14; i++) {
+        setTimeout(() => makeHeart(), i * 110);
+      }
+    });
+
+    function makeHeart() {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent = ["💗", "💖", "💕", "❤️", "💘"][Math.floor(Math.random() * 5)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (16 + Math.random() * 18) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4600);
+    }
+  </script>
+</body>
+</html>
